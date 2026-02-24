@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "eslint",
     "preview": "opennextjs-cloudflare preview",
-    "deploy": "opennextjs-cloudflare deploy"
+    "deploy": "next build --webpack && opennextjs-cloudflare build && opennextjs-cloudflare deploy"
   },
   "pnpm": {
     "onlyBuiltDependencies": ["esbuild", "workerd"]
