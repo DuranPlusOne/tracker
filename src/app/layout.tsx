@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "sonner";
 import BottomNav from "@/components/BottomNav";
+import PinLock from "@/components/PinLock";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -42,9 +43,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased pb-20`}
       >
-        {children}
-        <BottomNav />
-        <Toaster position="top-center" richColors />
+        <PinLock>
+          {children}
+          <BottomNav />
+          <Toaster position="top-center" richColors />
+        </PinLock>
       </body>
     </html>
   );
