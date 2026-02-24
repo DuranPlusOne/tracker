@@ -17,12 +17,16 @@
 /.next/
 /out/
 
+# cloudflare
+/.open-next/
+
 # production
 /build
 
 # misc
 .DS_Store
 *.pem
+.claude/
 
 # debug
 npm-debug.log*
