@@ -6,6 +6,5 @@ compatibility_flags = ["nodejs_compat"]
 assets = { directory = ".open-next/assets", binding = "ASSETS" }
 
 [vars]
-# Add non-secret env vars here.
-# Secret env vars (like API keys) should be set via the Cloudflare dashboard
-# or with: wrangler secret put MY_SECRET
+NEXT_PUBLIC_SUPABASE_URL = "https://qabzgyqzaacbbdnqummp.supabase.co"
+NEXT_PUBLIC_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFhYnpneXF6YWFjYmJkbnF1bW1wIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE4Njg1OTEsImV4cCI6MjA4NzQ0NDU5MX0.iy7TEKSaRTNw60QhVoNtxqNLAll8EN2jK_bxc_mCKD0"
