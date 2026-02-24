@@ -47,14 +47,14 @@ export default function HabitCard({
         )}
         <div>
           <p
-            className={`text-lg font-medium ${optimisticCompleted ? "line-through text-zinc-400" : ""}`}
+            className={`text-lg font-medium ${optimisticCompleted ? "line-through text-zinc-400 opacity-60" : ""}`}
           >
             {habit.emoji && <span className="mr-1.5">{habit.emoji}</span>}
             {habit.title}
           </p>
           {streak > 0 && (
-            <span className="text-sm text-orange-500">
-              🔥 {streak} day{streak !== 1 ? "s" : ""}
+            <span className="inline-flex items-center gap-0.5 rounded-full bg-orange-500/10 px-2 py-0.5 text-xs font-semibold text-orange-400">
+              🔥 {streak}d
             </span>
           )}
           {habit.description && (
@@ -67,9 +67,10 @@ export default function HabitCard({
         disabled={isPending}
         className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 text-lg font-bold transition-all duration-200 active:scale-90 ${
           optimisticCompleted
-            ? "border-green-500 bg-green-500 text-white shadow-green-200 shadow-md dark:shadow-green-900"
+            ? "border-green-500 bg-green-500 text-white"
             : "border-zinc-300 hover:border-zinc-500 hover:bg-zinc-50 dark:hover:bg-zinc-800"
         } ${isPending ? "opacity-50" : ""}`}
+        style={optimisticCompleted ? { boxShadow: "0 0 16px rgba(34,197,94,0.5)" } : {}}
         aria-label={optimisticCompleted ? "Mark incomplete" : "Mark complete"}
       >
         {optimisticCompleted ? "✓" : ""}

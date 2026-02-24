@@ -102,39 +102,51 @@ export default async function Page() {
   // Formatted date
   const dateDisplay = format(today, "EEEE, d MMMM");
 
+  // Time-based greeting
+  const hour = today.getHours();
+  const greeting =
+    hour < 12 ? "Good morning ☀️" : hour < 18 ? "Good afternoon 🌤️" : "Good evening 🌙";
+
   return (
     <main className="mx-auto max-w-lg p-6">
       {/* Header */}
       <div className="mb-4">
+        <p className="text-sm font-medium text-indigo-400">{greeting}</p>
         <h1 className="text-3xl font-bold">Today</h1>
-        <p className="text-sm text-zinc-500">{dateDisplay}</p>
+        <p className="text-sm" style={{ color: "var(--text-2)" }}>{dateDisplay}</p>
       </div>
 
       {/* Progress bar */}
       {totalCount > 0 && (
         <div className="mb-6">
           <div className="mb-1 flex items-center justify-between text-sm">
-            <span className="text-zinc-500">
+            <span style={{ color: "var(--text-2)" }}>
               {completedCount}/{totalCount} completed
             </span>
-            {allDone && <span className="text-green-600">All done! 🎉</span>}
           </div>
-          <div className="h-2 w-full overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-800">
+          <div
+            className={`h-2 w-full overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-800 ${allDone ? "ring-2 ring-green-400/30" : ""}`}
+          >
             <div
-              className={`h-full rounded-full transition-all duration-500 ${
-                allDone ? "bg-green-500" : "bg-zinc-900 dark:bg-zinc-100"
-              }`}
+              className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-500"
               style={{ width: `${progressPct}%` }}
             />
           </div>
+          {allDone && (
+            <div className="mt-3 rounded-xl bg-green-500/10 py-3 text-center text-base font-semibold text-green-400">
+              All done! 🎉
+            </div>
+          )}
         </div>
       )}
 
       {/* Weekly summary */}
       {totalCount > 0 && (
-        <p className="mb-6 text-sm text-zinc-500">
-          This week: {weekCompleted}/{weekTotal} completed ({weekPct}%)
-        </p>
+        <div className="mb-6">
+          <span className="inline-flex items-center gap-1 rounded-full bg-indigo-500/10 px-3 py-1 text-xs font-medium text-indigo-400">
+            This week: {weekPct}%
+          </span>
+        </div>
       )}
 
       {/* Empty state */}
@@ -155,10 +167,11 @@ export default async function Page() {
             return (
               <li
                 key={h.id}
-                className="rounded-xl border bg-white p-4 shadow-sm transition-shadow hover:shadow-md dark:bg-zinc-900"
+                className="rounded-xl border p-4 shadow-sm transition-shadow hover:shadow-md"
                 style={{
-                  borderColor: h.color ?? undefined,
+                  borderColor: h.color ?? "var(--border)",
                   borderLeftWidth: h.color ? "4px" : undefined,
+                  background: h.color ? `${h.color}08` : "var(--bg-card)",
                 }}
               >
                 <HabitCard

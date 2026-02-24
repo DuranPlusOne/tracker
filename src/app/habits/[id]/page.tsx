@@ -70,7 +70,7 @@ export default async function HabitDetailPage({
     <main className="mx-auto max-w-lg p-6">
       <Link
         href="/habits"
-        className="mb-4 inline-block text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-zinc-100"
+        className="mb-4 inline-block text-sm font-medium text-zinc-500 transition-all hover:-translate-x-0.5 hover:text-zinc-900 dark:hover:text-zinc-100"
       >
         ← Back to Habits
       </Link>
@@ -90,17 +90,17 @@ export default async function HabitDetailPage({
 
       {/* Stats */}
       <div className="mt-6 grid grid-cols-3 gap-4">
-        <div className="rounded-lg border border-zinc-200 p-3 text-center dark:border-zinc-800">
+        <div className="rounded-xl border border-orange-500/20 bg-orange-500/5 p-4 text-center">
           <p className="text-2xl font-bold text-orange-500">
             {currentStreak > 0 ? `🔥 ${currentStreak}` : "0"}
           </p>
           <p className="text-xs text-zinc-500">Current Streak</p>
         </div>
-        <div className="rounded-lg border border-zinc-200 p-3 text-center dark:border-zinc-800">
+        <div className="rounded-xl border border-blue-500/20 bg-blue-500/5 p-4 text-center">
           <p className="text-2xl font-bold">{totalCompletions}</p>
           <p className="text-xs text-zinc-500">Total (90d)</p>
         </div>
-        <div className="rounded-lg border border-zinc-200 p-3 text-center dark:border-zinc-800">
+        <div className="rounded-xl border border-green-500/20 bg-green-500/5 p-4 text-center">
           <p className="text-2xl font-bold">{completionRate}%</p>
           <p className="text-xs text-zinc-500">Rate (30d)</p>
         </div>

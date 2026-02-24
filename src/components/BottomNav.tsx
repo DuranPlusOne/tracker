@@ -12,7 +12,7 @@ export default function BottomNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-zinc-200 bg-white/80 backdrop-blur-lg dark:border-zinc-800 dark:bg-zinc-950/80 pb-[env(safe-area-inset-bottom)]">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-[var(--border)] bg-[var(--bg)]/90 backdrop-blur-xl pb-[env(safe-area-inset-bottom)]">
       <div className="mx-auto flex max-w-lg items-center justify-around">
         {tabs.map((tab) => {
           const isActive =
@@ -21,14 +21,17 @@ export default function BottomNav() {
             <Link
               key={tab.href}
               href={tab.href}
-              className={`flex flex-1 flex-col items-center gap-0.5 border-t-2 text-xs transition-colors ${
+              className={`relative flex flex-1 flex-col items-center gap-0.5 py-3 text-xs transition-colors ${
                 isActive
-                  ? "border-zinc-900 pt-[calc(0.75rem-2px)] font-semibold text-zinc-900 dark:border-zinc-100 dark:text-zinc-100"
-                  : "border-transparent py-3 font-medium text-zinc-400 hover:text-zinc-600 dark:text-zinc-500 dark:hover:text-zinc-300"
+                  ? "text-indigo-400 font-semibold"
+                  : "text-zinc-500 hover:text-zinc-300"
               }`}
             >
-              <span className="text-lg">{tab.icon}</span>
-              <span>{tab.label}</span>
+              {isActive && (
+                <span className="absolute inset-x-2 inset-y-1 rounded-xl bg-indigo-500/10" />
+              )}
+              <span className="relative text-lg">{tab.icon}</span>
+              <span className="relative">{tab.label}</span>
             </Link>
           );
         })}

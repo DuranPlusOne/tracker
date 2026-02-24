@@ -56,13 +56,21 @@ export default async function HabitsPage() {
         <h1 className="text-3xl font-bold">Habits</h1>
       </div>
 
-      <section className="mb-8 rounded-xl border border-zinc-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+      <section
+        className="mb-8 rounded-xl p-4 shadow-sm"
+        style={{ background: "var(--bg-card)", border: "1px solid var(--border)" }}
+      >
         <h2 className="mb-3 text-lg font-medium">Add New Habit</h2>
         <AddHabitForm />
       </section>
 
       <section>
-        <h2 className="mb-3 text-lg font-medium">Your Habits</h2>
+        <h2
+          className="mb-3 text-lg font-medium tracking-tight border-b pb-2"
+          style={{ borderColor: "var(--border)" }}
+        >
+          Your Habits
+        </h2>
         {habits.length === 0 ? (
           <p className="text-sm text-zinc-500">No habits yet. Add one above!</p>
         ) : (
@@ -70,10 +78,11 @@ export default async function HabitsPage() {
             {habits.map((h) => (
               <li
                 key={h.id}
-                className="flex items-center justify-between rounded-xl border bg-white p-4 shadow-sm dark:bg-zinc-900"
+                className="flex items-center justify-between rounded-xl p-4 shadow-sm"
                 style={{
-                  borderColor: h.color ?? undefined,
-                  borderLeftWidth: h.color ? "4px" : undefined,
+                  background: h.color ? `${h.color}08` : "var(--bg-card)",
+                  border: `1px solid ${h.color ?? "var(--border)"}`,
+                  borderLeftWidth: h.color ? "4px" : "1px",
                 }}
               >
                 <div>
