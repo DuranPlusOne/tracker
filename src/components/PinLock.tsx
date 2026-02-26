@@ -16,7 +16,7 @@ export default function PinLock({ children }: { children: React.ReactNode }) {
   }, []);
 
   const submit = useCallback((pin: string) => {
-    const correct = process.env.NEXT_PUBLIC_PIN_CODE ?? "260795";
+    const correct = process.env.NEXT_PUBLIC_PIN_CODE ?? "2607";
     if (pin === correct) {
       sessionStorage.setItem(STORAGE_KEY, "true");
       setUnlocked(true);
