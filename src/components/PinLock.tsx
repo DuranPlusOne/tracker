@@ -15,22 +15,19 @@ export default function PinLock({ children }: { children: React.ReactNode }) {
     setUnlocked(stored === "true");
   }, []);
 
-  const submit = useCallback(
-    (pin: string) => {
-      const correct = process.env.NEXT_PUBLIC_PIN_CODE ?? "1234";
-      if (pin === correct) {
-        sessionStorage.setItem(STORAGE_KEY, "true");
-        setUnlocked(true);
-      } else {
-        setShake(true);
-        setTimeout(() => {
-          setShake(false);
-          setDigits([]);
-        }, 600);
-      }
-    },
-    []
-  );
+  const submit = useCallback((pin: string) => {
+    const correct = process.env.NEXT_PUBLIC_PIN_CODE ?? "260795";
+    if (pin === correct) {
+      sessionStorage.setItem(STORAGE_KEY, "true");
+      setUnlocked(true);
+    } else {
+      setShake(true);
+      setTimeout(() => {
+        setShake(false);
+        setDigits([]);
+      }, 600);
+    }
+  }, []);
 
   const handleDigit = useCallback(
     (d: string) => {
@@ -43,7 +40,7 @@ export default function PinLock({ children }: { children: React.ReactNode }) {
         return next;
       });
     },
-    [shake, submit]
+    [shake, submit],
   );
 
   const handleBackspace = useCallback(() => {
@@ -122,11 +119,22 @@ export default function PinLock({ children }: { children: React.ReactNode }) {
 
       <style jsx global>{`
         @keyframes shake {
-          0%, 100% { transform: translateX(0); }
-          20% { transform: translateX(-8px); }
-          40% { transform: translateX(8px); }
-          60% { transform: translateX(-6px); }
-          80% { transform: translateX(6px); }
+          0%,
+          100% {
+            transform: translateX(0);
+          }
+          20% {
+            transform: translateX(-8px);
+          }
+          40% {
+            transform: translateX(8px);
+          }
+          60% {
+            transform: translateX(-6px);
+          }
+          80% {
+            transform: translateX(6px);
+          }
         }
         .animate-shake {
           animation: shake 0.5s ease-in-out;
